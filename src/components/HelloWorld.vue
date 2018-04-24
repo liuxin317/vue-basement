@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import HttpRequest from '../utils/fetch'
+import HttpRequest from '@/utils/fetch'
 
 export default {
   name: 'HelloWorld',
@@ -99,6 +99,9 @@ export default {
         operType: 'register-login',
         addr: 'getUserOperUrl',
         companyId: 2000
+      },
+      successBack: data => {
+        alert(123)
       }
     })
   }

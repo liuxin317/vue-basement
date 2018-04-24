@@ -6,6 +6,9 @@
 </template>
 
 <script>
+import 'es6-shim'
+import 'fetch-ie8'
+
 export default {
   name: 'App'
 }
