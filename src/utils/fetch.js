@@ -10,13 +10,20 @@
  * @mode {*是否允许跨域}
  */
 function HttpRequest (url, { method = "POST", body = {}, successBack, errorBack = null, credentials = "omit", mode = "no-cors" } = {}) {
-  let paramsArray = []
+  let paramsArray = [];
+  let dataBody = {};
 
   for (let val in body) {
     paramsArray.push(`${encodeURIComponent(val)}=${encodeURIComponent(body[val])}`)
   }
-
+  
   let params = paramsArray.join('&')
+
+  if (method === 'POST') {
+    dataBody.body = params;
+  } else {
+    url = url + '?' + params;
+  }
 
   fetch(url, {
     headers: {
@@ -25,7 +32,7 @@ function HttpRequest (url, { method = "POST", body = {}, successBack, errorBack 
     method,
     credentials,
     mode,
-    body: params
+    ...dataBody
   })
   .then(response => {
     return response.json()

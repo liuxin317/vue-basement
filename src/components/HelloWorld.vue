@@ -79,7 +79,12 @@
           awesome-vue
         </a>
       </li>
+      <li>
+        <router-link to="/hello/store">store</router-link>
+      </li>
     </ul>
+
+    <router-view></router-view>
   </div>
 </template>
 
@@ -101,7 +106,7 @@ export default {
         companyId: 2000
       },
       successBack: data => {
-        alert(123)
+        console.log(data)
       }
     })
   }
