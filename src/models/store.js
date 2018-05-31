@@ -17,7 +17,11 @@ var store = new Vuex.Store({
         
     },
     actions: { // 异步提交mutation
-        
+        asyncChangeState ({ commit }, info) {
+            setTimeout(() => {
+                commit(info.name, info.payload)
+            }, 2000)
+        }
     }
 })
 

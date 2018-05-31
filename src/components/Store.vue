@@ -3,11 +3,12 @@
     <h1>{{ title }}</h1>
     <p>当前数量：{{ count }}</p>
     <button @click="changeCount">修改count</button>
+    <button @click="asyncChangeCount">异步修改count</button>
   </section>
 </template>
 
 <script>
-  import { mapState, mapMutations } from 'vuex'
+  import { mapState, mapMutations, mapActions } from 'vuex'
 
   export default {
     name: 'store',
@@ -25,9 +26,18 @@
       ...mapMutations([ // 映射mutation
         'changeState'
       ]),
+      ...mapActions([ // 映射action
+        'asyncChangeState'
+      ]),
       changeCount () {
         this.changeState({
           count: this.count + 20
+        })
+      },
+      asyncChangeCount () {
+        this.asyncChangeState({
+          name: 'changeState',
+          payload: { count: this.count + 20 }
         })
       }
     }

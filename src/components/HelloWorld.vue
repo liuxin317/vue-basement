@@ -81,6 +81,7 @@
       </li>
       <li>
         <router-link to="/hello/store">store</router-link>
+        <span>{{ count }}</span>
       </li>
     </ul>
 
@@ -90,9 +91,15 @@
 
 <script>
 import HttpRequest from '@/utils/fetch'
+import { mapState } from 'vuex'
 
 export default {
   name: 'HelloWorld',
+  computed: {
+    ...mapState([
+      'count'
+    ])
+  },
   data () {
     return {
       msg: 'Welcome to LiuXin Vue.js App'

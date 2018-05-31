@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import store from '@/components/Store'
 
 Vue.use(Router)
+
+const HelloWorld = () => import('@/components/HelloWorld');
+const store = () => import('@/components/Store');
 
 export default new Router({
   routes: [
